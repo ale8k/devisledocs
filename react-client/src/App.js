@@ -1,8 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Header from "./components/header";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <header className="App-header">
@@ -16,11 +17,12 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
+          <Header/>
           Learn React
+          {true ? console.log('yes') : console.log('no')}
         </a>
       </header>
     </div>
   );
 }
 
-export default App;

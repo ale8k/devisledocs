@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
 
 // This is just an example of the data we expect
 router.post("/", (req, res) => {
-   let tutorial = new Tutorial({
+   const tutorial = new Tutorial({
       tutorialName: "Name",
       sections: [
          {

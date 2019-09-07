@@ -9,6 +9,9 @@ router.get("/", (req, res) => {
         req.session.x = 1;
         res.send("Welcome to this page for the first time!");
      }
+   
+   res.cookie("shreyas", "testing another cookie");
+   res.send(200);
 });
 
 module.exports = router;

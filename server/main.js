@@ -16,10 +16,10 @@ const users = require("./routes/users")
 // Main App
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
-app.use(cookieParser());
-app.use(session({secret: "Your secret key"}));
+// app.use(cookieParser());
+// app.use(session({secret: "Your secret key"}));
 
 app.use("/tutorials", tutorials);
 app.use("/users", users);
 
-app.listen(3000);
+app.listen(5000);
