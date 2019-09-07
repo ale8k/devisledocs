@@ -1,30 +1,5 @@
 const mongoose = require('mongoose');
 
-/**
- * Example complete tutorial schema object
-    {
-        "dateMade": "2019-09-06T21:55:40.243Z",
-        "_id": "5d72d5de45f59507f480ebc3",
-        "tutorialName": "Name",
-        "sections": [
-            {
-                "sectionDetails": [
-                    {
-                        "detailImages": [
-                            "base 64"
-                        ],
-                        "detailHeader": "Header name",
-                        "detailText": "Paragraph here"
-                    }
-                ],
-                "sectionName": "Section name"
-            }
-        ],
-        "__v": 0
-    }
- */
-
-
 const tutSectionDetailSchema = new mongoose.Schema({
     detailHeader: {
         type: String,
