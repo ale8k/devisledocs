@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { ApiService } from "src/shared/services/api.service";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { ApiService } from "./shared/services/api.service";
 
 @Component({
   selector: "app-root",
@@ -13,9 +13,11 @@ export class AppComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-  }
-
-  test() {
     this.apiService.getAllTutorials();
   }
+
+  public apiCall() {
+    this.apiService.getAllTutorials();
+  }
+
 }

@@ -1,0 +1,26 @@
+.navigation-bar {
+    display: flex;
+    width: 100vw;
+    height: 6vh;
+    align-items: center;
+    justify-content: space-between;
+    background-color: blue;
+
+    img {
+        margin: 0 0 0 3vw;
+        height: auto;
+        width: auto;
+    }
+
+    nav {
+        margin: 0 3vw 0 0;
+        ul {
+            list-style-type: none;
+            li {
+                a {
+                    font-size: 1em;
+                }
+            }
+        }
+    }
+}
