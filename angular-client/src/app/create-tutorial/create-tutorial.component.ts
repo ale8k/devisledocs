@@ -7,9 +7,16 @@ import { Component, OnInit } from "@angular/core";
 })
 export class CreateTutorialComponent implements OnInit {
 
+  // TODO: Make section data model (interface)
+  private sections: Array<any> = [];
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public generateSection(): void {
+    this.sections.push(1);
   }
 
 }

@@ -1,3 +1,7 @@
 <div class="create-tutorial">
-
+    <input type="text" placeholder="Enter tutorial name...">
+    <button (click)="generateSection()">Create section</button>
+    <div class="section-list">
+        <create-tutorial-section *ngFor="let section of sections"></create-tutorial-section>
+    </div>
 </div>
