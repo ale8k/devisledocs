@@ -8,13 +8,12 @@
             <button (click)="addDetail(i)">Add detail</button>
             <!-- Should now represent the inner array, details-->
             <div formArrayName="sectionDetails">
-                <div *ngFor="let detail of sectionsForms.controls[i].sectionDetails">
-                    <input formControlName="detailHeader">
-
+                <div *ngFor="let detail of sectionsForms.controls[i].controls.sectionDetails.controls; let j = index"
+                [formGroupName]="j">
+                    <input placeholder="Detail header" formControlName="detailHeader">
                 </div>
             </div>
             <!-- // -->
-
             <button (click)="removeSection(i)">Remove section</button>
         </div>
     </div>

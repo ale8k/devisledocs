@@ -46,14 +46,10 @@ export class CreateTutorialComponent implements OnInit {
     });
     const section = this.sectionsForms.controls[i].get("sectionDetails") as FormArray;
 
-    // we have the correct section...
     section.push(details);
-    console.log(section.controls);
-    // and the sectionDetails array is getting stuff
-    // pushed into it
-
+    console.log(this.sectionsForms);
+    console.log(this.tutorialForm.value);
   }
-
 
 }
 
