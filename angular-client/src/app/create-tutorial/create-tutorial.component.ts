@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, FormArray, Form } from "@angular/forms";
+import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
 @Component({
   selector: "create-tutorial",
   templateUrl: "./create-tutorial.component.html",
@@ -7,35 +7,53 @@ import { FormBuilder, FormGroup, FormArray, Form } from "@angular/forms";
 })
 export class CreateTutorialComponent implements OnInit {
 
-  public form: FormGroup;
+  public tutorialForm: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder
+    private fb: FormBuilder
   ) { }
 
   public ngOnInit(): void {
-    this.form = this.formBuilder.group({
+    this.tutorialForm = this.fb.group({
       tutorialName: "",
-      sections: this.formBuilder.array([])
-    });
-  }
-
-  public get sectionForms(): FormArray {
-    return this.form.get("sections") as FormArray;
-  }
-
-  public addSectionForm(): void {
-    const section = this.formBuilder.group({
-      sectionName: ""
+      sections: this.fb.array([])
     });
 
-    this.sectionForms.push(section);
+    console.log(this.sectionsForms);
+    console.log(this.tutorialForm.controls.sections[0]);
   }
 
-  public removeSectionForm(sectionIndex): void {
-    this.sectionForms.removeAt(sectionIndex);
+  get sectionsForms(): FormArray {
+    return this.tutorialForm.controls.sections as FormArray;
+  }
+
+  public addSection(): void {
+    const section = this.fb.group({
+      sectionName: "",
+      sectionDetails: this.fb.array([])
+    });
+
+    this.sectionsForms.push(section);
+  }
+
+  public removeSection(i) {
+    this.sectionsForms.removeAt(i);
+  }
+
+  public addDetail(i): void {
+    const details = this.fb.group({
+      detailHeader: "",
+    });
+    const section = this.sectionsForms.controls[i].get("sectionDetails") as FormArray;
+
+    // we have the correct section...
+    section.push(details);
+    console.log(section.controls);
+    // and the sectionDetails array is getting stuff
+    // pushed into it
 
   }
+
 
 }
 
