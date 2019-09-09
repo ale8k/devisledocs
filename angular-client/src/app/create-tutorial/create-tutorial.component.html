@@ -1,1 +1,18 @@
-<p>Create tutorial using reactive forms, probs best bet</p>
+<p>Create tutorial using reactive forms, probs best bet</p>    <input placeholder="Enter tutorial name..." formControlName="tutorialName">
+<form [formGroup]="form">
+
+    <input placeholder="Enter tutorial name..." formControlName="tutorialName">
+
+    <div formArrayName="sections">
+        <div 
+            *ngFor="let section of sectionForms.controls; let i = index"
+            [formGroupName]="i">
+
+            <input placeholder="Enter section name..." formControlName="sectionName">
+            <button (click)="removeSectionForm(i)">Remove section</button>
+        </div>
+
+    </div>
+
+    <button (click)="addSectionForm()">Add section</button>
+</form>
