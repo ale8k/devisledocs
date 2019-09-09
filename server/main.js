@@ -4,6 +4,7 @@ const app = express();
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 // Importing and Setting up Mongoose
 const mongoose = require('mongoose');
@@ -13,13 +14,8 @@ mongoose.connect('mongodb://localhost/devisledocs');
 const tutorials = require("./routes/tutorials");
 const users = require("./routes/users")
 
-// Set basic headers for all requests
-app.use((req, res, next) => {
-    res.append('Access-Control-Allow-Origin', ['*']); // temporary for debugging 
-    res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.append('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-});
+// Enable cors for all requests
+app.use(cors());
 
 // Main App
 app.use(bodyParser.json());

@@ -3,15 +3,18 @@
 -->
 
 <!-- formGroup is bound to our tutorialForm field, represents our entire form-->
-<form [formGroup]="tutorialForm">
+<form [formGroup]="tutorialForm" class="tutorial-form">
     <!-- This input will only be rendered once, as it is in our top level form body -->
+    <h1>Enter a tutorial name:</h1>
     <input placeholder="Enter tutorial name..." formControlName="tutorialName">
+    <button (click)="addSection()">Add section</button>
 
     <!-- This is the first array in our top level form body -->
     <div formArrayName="sections">
-        <div *ngFor="let section of sectionsForms.controls; let i = index" [formGroupName]="i">
+        <div *ngFor="let section of sectionsForms.controls; let i = index" [formGroupName]="i" class="section-form-list">
 
             <!-- This input is rendered once per each instance of the array -->
+            <h1>Enter a section name:</h1>
             <input placeholder="Section name" formControlName="sectionName">
 
             <button (click)="addDetail(i)">Add detail</button>
@@ -22,9 +25,12 @@
             <div formArrayName="sectionDetails">
                 <div 
                     *ngFor="let detail of sectionsForms.controls[i].controls.sectionDetails.controls; let j = index"
-                    [formGroupName]="j">
+                    [formGroupName]="j"
+                    class="detail-form-list">
+                    <h1>Enter the detail header name:</h1>
                     <input placeholder="Detail header" formControlName="detailHeader">
-                    <input placeholder="Detail text" formControlName="detailText">
+                    <h1>Enter the detail text body:</h1>
+                    <textarea placeholder="Detail text" formControlName="detailText"></textarea>
                     <button (click)="removeDetail(i, j)">Remove detail</button>
                 </div>
             </div>
@@ -33,7 +39,5 @@
         </div>
     </div>
 
-    <button (click)="addSection()">Add section</button>
-    <button (click)="getDataFromForm()">Log form data</button>
-
 </form>
+<button (click)="getDataFromForm()">Log form data</button>

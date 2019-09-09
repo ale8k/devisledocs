@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Tutorial = require("../models/tutorialSchema");
 
-
 router.get("/", (req, res) => {
    Tutorial.find({}, (err, resp) => {
       res.send(resp);
@@ -10,14 +9,13 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-
    const tutorial = new Tutorial({
       tutorialName: req.body.tutorialName,
       sections: req.body.sections
    });
 
    tutorial.save();
-   res.send("got request");
+   res.sendStatus(200);
    
 });
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Component({
   selector: "create-tutorial",
@@ -90,50 +90,17 @@ export class CreateTutorialComponent implements OnInit {
 
   public getDataFromForm(): void {
     this.sendDataToAPI();
-    console.log(JSON.stringify(this.tutorialForm.value));
   }
 
+  /*
+   * NOTE: Angular http.post() if not passed responseType option, defaults to JSON
+   * Had a fucking nightmare figuring this out lol.
+   */
   private sendDataToAPI(): void {
-    this.http.post("http://127.0.0.1:5000/tutorials", JSON.stringify(this.tutorialForm.value));
+    this.http.post("http://127.0.0.1:5000/tutorials", this.tutorialForm.value, {
+      responseType: "text"
+    }).subscribe(d => console.log(d));
+
   }
 
 }
-
-
-
-
-
-// Expected output
-/*
-{
-      "tutorialName": "Name",
-      "sections": [
-         {
-            "sectionName": "Section name",
-            "sectionDetails": [
-               {
-                  "detailHeader": "Header name",
-                  "detailImages": ["base 64"],
-					"detailText":"TITS"
-               }
-            ]
-         }
-      ]
-   }
-*/
-// Current output - winner winner chicken dinner
-/*
-{
-   "tutorialName":"Name",
-   "sections":[
-      {
-         "sectionName":"Section name",
-         "sectionDetails":[
-            {
-               "detailHeader":"Header name"
-            }
-         ]
-      }
-   ]
-}
-*/
