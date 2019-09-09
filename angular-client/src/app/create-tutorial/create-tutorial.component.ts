@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
+import { HttpClient } from "@angular/common/http";
+
 @Component({
   selector: "create-tutorial",
   templateUrl: "./create-tutorial.component.html",
@@ -7,26 +9,36 @@ import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
 })
 export class CreateTutorialComponent implements OnInit {
 
+  /**
+   * Local field to store our form state
+   */
   public tutorialForm: FormGroup;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private http: HttpClient
   ) { }
 
+  /**
+   * Initialises our form [into a parent group]
+   */
   public ngOnInit(): void {
     this.tutorialForm = this.fb.group({
       tutorialName: "",
       sections: this.fb.array([])
     });
-
-    console.log(this.sectionsForms);
-    console.log(this.tutorialForm.controls.sections[0]);
   }
 
+  /**
+   * A getter to reference the sections FormArray property within our parent FormGroup
+   */
   get sectionsForms(): FormArray {
     return this.tutorialForm.controls.sections as FormArray;
   }
 
+  /**
+   * Appends a new section FormGroup to our parent FormGroups sections FormArray
+   */
   public addSection(): void {
     const section = this.fb.group({
       sectionName: "",
@@ -36,19 +48,53 @@ export class CreateTutorialComponent implements OnInit {
     this.sectionsForms.push(section);
   }
 
+  /**
+   * Take the index from the *ngFor for our sections FormArray and remove
+   * that section FormGroup at that index
+   * @param i Section index
+   */
   public removeSection(i) {
     this.sectionsForms.removeAt(i);
   }
 
+  /**
+   * Gets section FormGroup at index i in sections FromArray,
+   * then accesses the sectionDetails FormArray within the section FormGroup
+   * and appends the new details FormGroup into it
+   * @param i Section index
+   */
   public addDetail(i): void {
     const details = this.fb.group({
       detailHeader: "",
+      detailText: ""
     });
-    const section = this.sectionsForms.controls[i].get("sectionDetails") as FormArray;
 
-    section.push(details);
-    console.log(this.sectionsForms);
-    console.log(this.tutorialForm.value);
+    const sectionDetails = this.sectionsForms.controls[i].get("sectionDetails") as FormArray;
+
+    sectionDetails.push(details);
+  }
+
+  /**
+   * Gets the section index, accesses that section FormGroup then uses
+   * the .get() / alternative to controls.Property to get the sectionDetails FormArray
+   *
+   * Because we then know at section i, we have detail index j, we can remove
+   * detail j at index i
+   * @param i Section index
+   * @param j Detail index
+   */
+  public removeDetail(i, j): void {
+    const section = this.sectionsForms.controls[i].get("sectionDetails") as FormArray;
+    section.removeAt(j);
+  }
+
+  public getDataFromForm(): void {
+    this.sendDataToAPI();
+    console.log(JSON.stringify(this.tutorialForm.value));
+  }
+
+  private sendDataToAPI(): void {
+    this.http.post("http://127.0.0.1:5000/tutorials", JSON.stringify(this.tutorialForm.value));
   }
 
 }
@@ -57,24 +103,37 @@ export class CreateTutorialComponent implements OnInit {
 
 
 
-
+// Expected output
 /*
-  {
-    "tutorialName": "Name",
+{
+      "tutorialName": "Name",
       "sections": [
-        {
-          "sectionName": "Section name",
-          "sectionDetails": [
-            {
-              "detailHeader": "Header name",
-              "detailImages": ["base 64"],
-              "detailText": "TITS"
-            }
-          ]
-        },
+         {
+            "sectionName": "Section name",
+            "sectionDetails": [
+               {
+                  "detailHeader": "Header name",
+                  "detailImages": ["base 64"],
+					"detailText":"TITS"
+               }
+            ]
+         }
       ]
-  }
+   }
 */
-
-// get data from form
-// this.form.valueChanges.subscribe(console.log);
+// Current output - winner winner chicken dinner
+/*
+{
+   "tutorialName":"Name",
+   "sections":[
+      {
+         "sectionName":"Section name",
+         "sectionDetails":[
+            {
+               "detailHeader":"Header name"
+            }
+         ]
+      }
+   ]
+}
+*/

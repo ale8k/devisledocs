@@ -1,23 +1,39 @@
+<!--
+    TODO: This could do with refactoring...
+-->
+
+<!-- formGroup is bound to our tutorialForm field, represents our entire form-->
 <form [formGroup]="tutorialForm">
+    <!-- This input will only be rendered once, as it is in our top level form body -->
     <input placeholder="Enter tutorial name..." formControlName="tutorialName">
 
+    <!-- This is the first array in our top level form body -->
     <div formArrayName="sections">
         <div *ngFor="let section of sectionsForms.controls; let i = index" [formGroupName]="i">
+
+            <!-- This input is rendered once per each instance of the array -->
             <input placeholder="Section name" formControlName="sectionName">
 
             <button (click)="addDetail(i)">Add detail</button>
-            <!-- Should now represent the inner array, details-->
+
+            <!-- This nested array, in our previous array, gets our current section we are on -->
+            <!-- accesses the controls of it, it has a FormArray called sectionDetails -->
+            <!-- And we do an *ngFor on it's controls, so we are certain it only belongs to 1 section -->
             <div formArrayName="sectionDetails">
-                <div *ngFor="let detail of sectionsForms.controls[i].controls.sectionDetails.controls; let j = index"
-                [formGroupName]="j">
+                <div 
+                    *ngFor="let detail of sectionsForms.controls[i].controls.sectionDetails.controls; let j = index"
+                    [formGroupName]="j">
                     <input placeholder="Detail header" formControlName="detailHeader">
+                    <input placeholder="Detail text" formControlName="detailText">
+                    <button (click)="removeDetail(i, j)">Remove detail</button>
                 </div>
             </div>
-            <!-- // -->
+ 
             <button (click)="removeSection(i)">Remove section</button>
         </div>
     </div>
 
     <button (click)="addSection()">Add section</button>
+    <button (click)="getDataFromForm()">Log form data</button>
 
 </form>
