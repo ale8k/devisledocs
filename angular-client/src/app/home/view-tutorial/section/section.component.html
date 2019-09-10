@@ -1,5 +1,9 @@
-<div *ngIf="$currentSection | async as section">
-    {{ section | json }}
-    <h1>Section name: {{ section[0].sectionName }}</h1>
-    <h1>Section name: {{ section[0].sectionName }}</h1>
+<div class="section-container-outer">
+    <div *ngIf="$currentSection | async as section">
+        <h1>Section name: {{ section[0].sectionName }}</h1>
+        <div *ngFor="let detail of section[0].sectionDetails">
+            <h1> Detail header: {{ detail.detailHeader }}</h1>
+            <h1> Detail text: {{ detail.detailText }}</h1>
+        </div>
+    </div>
 </div>

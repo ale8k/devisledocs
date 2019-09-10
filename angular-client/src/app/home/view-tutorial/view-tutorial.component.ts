@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { ITutorial } from "src/app/shared/models/ITutorial";
-import { ApiService } from "src/app/shared/services/api.service";
 import { TutorialService } from "src/app/shared/services/tutorial.service";
 
 @Component({

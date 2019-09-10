@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { ApiService } from "../shared/services/api.service";
 import { Router } from "@angular/router";
 import { TutorialService } from "../shared/services/tutorial.service";
 
