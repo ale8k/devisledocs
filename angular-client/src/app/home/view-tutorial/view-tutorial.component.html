@@ -1,5 +1,9 @@
-<p>view-tutorial works!</p>
-<p>
-    tutorial id is:
-    {{ $tutorial | async | json }}
-</p>
+<h1>Section names:</h1>
+<ul *ngIf="($tutorial | async) as tutorial">
+    <li 
+        *ngFor="let section of tutorial[0].sections"
+        (click)="navigateToSection(tutorial[0]._id, section.sectionName)">
+        {{ section.sectionName }}
+    </li>
+</ul>
+<router-outlet name="section"></router-outlet>
