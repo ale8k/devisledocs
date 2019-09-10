@@ -17,8 +17,14 @@ export class ApiService {
     return this.http.get<Array<ITutorial>>("http://127.0.0.1:5000/tutorials/all");
   }
 
-  public getAllTutNamesAndIds() {
-
+  /*
+   * NOTE: Angular http.post() if not passed responseType option, defaults to JSON
+   * Had a fucking nightmare figuring this out lol.
+   */
+  public saveTutorial(tutorial: ITutorial) {
+    this.http.post("http://127.0.0.1:5000/tutorials", tutorial as ITutorial, {
+      responseType: "text"
+    }).subscribe(d => console.log(d));
   }
 
 }

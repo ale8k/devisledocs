@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
 import { ITutorial } from "../shared/models/ITutorial";
+import { ApiService } from "../shared/services/api.service";
 
 @Component({
   selector: "create-tutorial",
@@ -17,7 +18,8 @@ export class CreateTutorialComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private apiService: ApiService
   ) { }
 
   /**
@@ -90,18 +92,7 @@ export class CreateTutorialComponent implements OnInit {
   }
 
   public getDataFromForm(): void {
-    this.sendDataToAPI();
-  }
-
-  /*
-   * NOTE: Angular http.post() if not passed responseType option, defaults to JSON
-   * Had a fucking nightmare figuring this out lol.
-   */
-  private sendDataToAPI(): void {
-    this.http.post("http://127.0.0.1:5000/tutorials", this.tutorialForm.value as ITutorial, {
-      responseType: "text"
-    }).subscribe(d => console.log(d));
-
+    this.apiService.saveTutorial(this.tutorialForm.value as ITutorial);
   }
 
 }
