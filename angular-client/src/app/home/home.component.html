@@ -1,5 +1,5 @@
 <div>
-    <div *ngIf="$tutorialNamesIdsAndCategories | async as tutNameIdCats; else somethingWentWrong">
+    <div *ngIf="$tutorialNamesIdsAndCategories | async as tutNameIdCats">
         <h1>Tutorial names:</h1>
         <ul>
             <li 
@@ -8,9 +8,4 @@
             </li>
         </ul>
     </div>
-
-    <ng-template #somethingWentWrong>
-        something went wrong
-        check your connection or try again later
-    </ng-template>
 </div>

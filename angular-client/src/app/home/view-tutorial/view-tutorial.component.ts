@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { ITutorial } from "src/app/shared/models/ITutorial";
 import { ApiService } from "src/app/shared/services/api.service";
+import { TutorialService } from "src/app/shared/services/tutorial.service";
 
 @Component({
   selector: "view-tutorial",
@@ -14,23 +15,24 @@ export class ViewTutorialComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private apiService: ApiService,
-    private route: Router
+    private route: Router,
+    private tutorialService: TutorialService
   ) { }
 
   ngOnInit() {
+    console.log("view-tutorial init");
     this.activatedRoute.params.subscribe(id => {
-      this.$tutorial = this.apiService.getTutorialById(id.tutId as String);
+      this.$tutorial = this.tutorialService.getTutById(id);
+      this.tutorialService.currentTutorial = this.$tutorial;
     });
   }
 
-  public navigateToSection(tutId, sectionName) {
+  public navigateToSection(tutId, sectionName): void {
     this.route.navigate(["/tutorial/", tutId, {
       outlets: {
         section: sectionName
       }
     }]);
   }
-
 
 }

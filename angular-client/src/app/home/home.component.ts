@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ApiService } from "../shared/services/api.service";
 import { Router } from "@angular/router";
+import { TutorialService } from "../shared/services/tutorial.service";
 
 @Component({
   selector: "home",
@@ -12,12 +13,12 @@ export class HomeComponent implements OnInit {
   public $tutorialNamesIdsAndCategories;
 
   constructor(
-    private apiService: ApiService,
-    private route: Router
+    private route: Router,
+    private tutorialService: TutorialService
   ) { }
 
   ngOnInit() {
-    this.$tutorialNamesIdsAndCategories = this.apiService.getAllTutorialNamesIdsAndCategories();
+    this.$tutorialNamesIdsAndCategories = this.tutorialService.getAllTutNamesIdsAndCats();
   }
 
   public navigateToTutorial(id: String): void {
