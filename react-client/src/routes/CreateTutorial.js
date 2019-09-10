@@ -1,19 +1,24 @@
 import React, { Component } from "react"
 import Section from "../components/createTutorial/section"
 
+//Bootstrap
+import { Button } from "react-bootstrap"
+
 const sectionsDataModel = {
-  sections: [
+  sectionName: String,
+  sectionDetails: [
     {
-      sectionName: String,
-      sectionDetails: [
-        {
-          detailHeader: String,
-          detailImages: [String],
-          detailText: String
-        }
-      ]
+      detailHeader: String,
+      detailImages: [String],
+      detailText: String
     }
   ]
+}
+
+const sectionsDetailsDataModel = {
+  detailHeader: String,
+  detailImages: [String],
+  detailText: String
 }
 
 export default class CreateTutorial extends Component {
@@ -29,50 +34,129 @@ export default class CreateTutorial extends Component {
     detailTextCounter: null
   }
 
-  createTut() {
+  createTut = () => {
     this.setState({
-      createTutorial: true
+      createTutorial: !this.state.createTutorial
     })
   }
 
-  createSection() {
+  createSection = (e, index, type) => {
     const tutorialData = { ...this.state.tutorialData }
-    tutorialData.sections.push(sectionsDataModel)
-    this.setState({
-      tutorialData
-    })
+    switch (type) {
+      case "create":
+        tutorialData.sections.push(sectionsDataModel)
+        this.setState({
+          tutorialData
+        })
+        break
+
+      case "delete":
+        tutorialData.sections.splice(index, 1)
+        this.setState({
+          tutorialData
+        })
+        break
+    }
   }
 
-  setTutorial() {
+  SectionDetailsHandler = (e, index, type) => {
+    const tutorialData = { ...this.state.tutorialData }
+    switch (type) {
+      case "create":
+        tutorialData.sections[index].sectionDetails.push(
+          sectionsDetailsDataModel
+        )
+        this.setState({
+          tutorialData
+        })
+        console.log(tutorialData, "tutorialData")
+        break
+
+      case "delete":
+        tutorialData.sections[index].sectionDetails.splice(index, 1)
+        this.setState({
+          tutorialData
+        })
+        console.log(tutorialData, "tutorialData")
+    }
+  }
+
+  setTutorial = () => {
     console.log(this.refs)
-    this.state.tutorialData.sections.forEach(d => console.log(d))
+    // this.state.tutorialData.sections.forEach(d => console.log(d))
   }
 
   render() {
     return (
-      <div>
-        <button onClick={() => this.createTut()}>Create Tutorial</button>
-        {this.state.createTutorial && (
-          // /** flexbox on this bad boy */
-          <div>
-            <label>
-              Tutorial Name
-              <input
-                type="text"
-                name="tutorialName"
-                placeholder="Enter Tutorial Name"
-                ref="tutorialName"
-              />
-            </label>
-            <button onClick={() => this.createSection()}>Create</button>
-            {this.state.tutorialData.sections.map((data, i) => {
-              return <Section key={i} index={i} />
-            })}
-            <button type="submit" onClick={() => this.setTutorial()}>
-              Submit
-            </button>
-          </div>
-        )}
+      <div className="bg-dark">
+        <div
+          className="p-2 container"
+          style={{ minHeight: "calc(100vh - 50px)" }}
+        >
+          <Button
+            variant="primary"
+            className="m-3"
+            onClick={() => this.createTut()}
+          >
+            Create Tutorial
+          </Button>
+          {this.state.createTutorial && (
+            // /** flexbox on this bad boy */
+            <div>
+              <div className="d-flex flex-column justify-content-center align-items-center text-light">
+                <div>
+                  <label htmlFor="tutorialName" className="m-2">
+                    Tutorial Name:
+                  </label>
+                  <input
+                    id="tutorialName"
+                    className="form-control"
+                    type="text"
+                    name="tutorialName"
+                    placeholder="Enter Tutorial Name"
+                    ref="tutorialName"
+                  />
+                </div>
+                <Button
+                  variant="primary"
+                  className="m-3"
+                  onClick={e => this.createSection(e, "index", "create")}
+                >
+                  Add Section
+                </Button>
+                {this.state.tutorialData.sections.map((data, i) => {
+                  return (
+                    <>
+                      <Section
+                        SectionDetailsHandler={this.SectionDetailsHandler}
+                        sectionDetails={
+                          this.state.tutorialData.sections[i].sectionDetails
+                        }
+                        key={i}
+                        index={i}
+                      />
+                      <Button
+                        variant="danger"
+                        className="m-3"
+                        onClick={e => this.createSection(e, i, "delete")}
+                      >
+                        Remove Section
+                      </Button>
+                    </>
+                  )
+                })}
+                <Button
+                  variant="success"
+                  className="m-3"
+                  type="submit"
+                  onClick={() => this.setTutorial()}
+                >
+                  Submit
+                </Button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     )
   }
