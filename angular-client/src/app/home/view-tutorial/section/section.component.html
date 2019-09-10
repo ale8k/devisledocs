@@ -1,3 +1,5 @@
-<p>
-    section works!
-</p>
+<div *ngIf="$currentSection | async as section">
+    {{ section | json }}
+    <h1>Section name: {{ section[0].sectionName }}</h1>
+    <h1>Section name: {{ section[0].sectionName }}</h1>
+</div>

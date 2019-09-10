@@ -19,7 +19,7 @@ export class SectionComponent implements OnInit {
   ngOnInit() {
     console.log("section init");
     this.activatedRoute.params.subscribe(d => {
-      this.$currentSection = this.tutorialService.getCurrentSection(d.sectionName).subscribe(d => console.log(d));
+      this.$currentSection = this.tutorialService.getCurrentSection(d.sectionName);
     });
 
   }
