@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
+import { ITutorial } from "../shared/models/ITutorial";
 
 @Component({
   selector: "create-tutorial",
@@ -97,7 +98,7 @@ export class CreateTutorialComponent implements OnInit {
    * Had a fucking nightmare figuring this out lol.
    */
   private sendDataToAPI(): void {
-    this.http.post("http://127.0.0.1:5000/tutorials", this.tutorialForm.value, {
+    this.http.post("http://127.0.0.1:5000/tutorials", this.tutorialForm.value as ITutorial, {
       responseType: "text"
     }).subscribe(d => console.log(d));
 
