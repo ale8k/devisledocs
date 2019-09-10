@@ -25,10 +25,11 @@ router.get("/get-by-id/:tutorialId", filterSpecificId, (req, res) => {
 /*
  * POST RESPONSES 
  */
-router.post("/", (req, res) => {
+router.post("/save-tutorial", (req, res) => {
    const tutorial = new Tutorial({
       tutorialName: req.body.tutorialName,
-      sections: req.body.sections
+      sections: req.body.sections,
+      tutorialCategory: req.body.tutorialCategory
    });
 
    tutorial.save();
@@ -46,7 +47,7 @@ router.put("/", (req, res) => {
 /*
  * DELETE RESPONSES 
  */
-router.delete("/", (req, res) => {
+router.delete("/all", (req, res) => {
    // Removes all documents :)
    Tutorial.remove().exec();
    res.send(200);

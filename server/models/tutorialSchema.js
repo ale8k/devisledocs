@@ -41,6 +41,11 @@ const tutSchema = new mongoose.Schema({
     trim: true,
     required: "Tutorial name field is required"
   },
+  tutorialCategory: {
+    type: String,
+    trim: true,
+    required: "Tutorial category field is required"
+  },
   sections: {
     type: [tutSectionSchema],
     trim: true,
