@@ -28,7 +28,8 @@ export class CreateTutorialComponent implements OnInit {
   public ngOnInit(): void {
     this.tutorialForm = this.fb.group({
       tutorialName: "",
-      sections: this.fb.array([])
+      sections: this.fb.array([]),
+      tutorialCategory: ""
     });
   }
 

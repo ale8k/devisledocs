@@ -3,7 +3,7 @@ const router = express.Router();
 const Tutorial = require("../models/tutorialSchema");
 
 // Middleware
-const filterNameAndIds = require("../middleware/filter-name-and-id");
+const filterByNameIdAndCategory = require("../middleware/filter-name-id-category");
 const filterSpecificId = require("../middleware/filter-specific-id");
 /*
  * GET RESPONSES
@@ -14,7 +14,7 @@ router.get("/all", (req, res) => {
    });
 });
 
-router.get("/all/names&ids", filterNameAndIds,  (req, res) => {
+router.get("/all/names&ids", filterByNameIdAndCategory,  (req, res) => {
    res.send(res.payLoad)
 });
 
