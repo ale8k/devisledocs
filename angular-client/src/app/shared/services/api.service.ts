@@ -16,12 +16,12 @@ export class ApiService {
     return this.http.get<Array<ITutorial>>("http://127.0.0.1:5000/tutorials/all");
   }
 
-  public getAllTutorialNamesAndIds() {
+  public getAllTutorialNamesIdsAndCategories() {
     return this.http.get(("http://127.0.0.1:5000/tutorials/all/names&ids"));
   }
 
-  public getTutorialById(id: String) {
-    return this.http.get(("http://127.0.0.1:5000/tutorials/get-by-id/" + id));
+  public getTutorialById(id: String): Observable<ITutorial> {
+    return this.http.get<ITutorial>(("http://127.0.0.1:5000/tutorials/get-by-id/" + id));
   }
 
   /*

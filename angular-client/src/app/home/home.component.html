@@ -1,1 +1,15 @@
-<p>{{ $tutorials | async | json}}</p>
+<div>
+    <div *ngIf="$tutorialNamesIdsAndCategories | async as tutNameIdCats; else somethingWentWrong">
+        <ul>
+            <li 
+                *ngFor="let tut of tutNameIdCats"
+                (click)="navigateToTutorial(tut._id)"> {{ tut.tutorialName }}
+            </li>
+        </ul>
+    </div>
+
+    <ng-template #somethingWentWrong>
+        something went wrong
+        check your connection or try again later
+    </ng-template>
+</div>

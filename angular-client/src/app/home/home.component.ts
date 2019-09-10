@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ApiService } from "../shared/services/api.service";
-import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "home",
@@ -9,14 +9,19 @@ import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 })
 export class HomeComponent implements OnInit {
 
-  public $tutorials;
+  public $tutorialNamesIdsAndCategories;
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private route: Router
   ) { }
 
   ngOnInit() {
-    this.$tutorials = this.apiService.getAllTutorials();
+    this.$tutorialNamesIdsAndCategories = this.apiService.getAllTutorialNamesIdsAndCategories();
+  }
+
+  public navigateToTutorial(id: String): void {
+    this.route.navigateByUrl("tutorial/" + id);
   }
 
 }
