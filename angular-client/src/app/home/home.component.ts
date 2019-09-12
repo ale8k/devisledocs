@@ -9,6 +9,7 @@ import { TutorialService } from "../shared/services/tutorial.service";
 })
 export class HomeComponent implements OnInit {
 
+
   public $tutorialNamesIdsAndCategories;
 
   constructor(

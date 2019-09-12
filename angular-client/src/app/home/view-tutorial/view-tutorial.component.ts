@@ -12,6 +12,8 @@ import { TutorialService } from "src/app/shared/services/tutorial.service";
 export class ViewTutorialComponent implements OnInit {
   public $tutorial: Observable<ITutorial>;
 
+  panelOpenState = false; // testing expansion module
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private route: Router,

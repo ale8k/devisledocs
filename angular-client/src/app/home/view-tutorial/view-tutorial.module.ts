@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { ViewTutorialComponent } from "./view-tutorial.component";
 import { SectionComponent } from "./section/section.component";
 import { RouterModule } from "@angular/router";
+import { MatExpansionModule } from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { RouterModule } from "@angular/router";
   ],
   imports: [
     CommonModule,
+    MatExpansionModule,
     RouterModule
   ]
 })
