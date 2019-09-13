@@ -6,12 +6,12 @@ Official DevIsle documentation site.
 * ReactJS
 * NodeJS *with*
   * Mongoose
-  * MSSql driver (to be added)
+  * MSSql driver (--potentially to be added)
   * ExpressJS *with*
     * Express-session
     * Cookie-parser
     * CORS
     * Body-parser
 * MongoDB
-* MSSql (to be added)
+* MSSql (--potentially to be added)
 
