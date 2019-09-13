@@ -1,43 +1,14 @@
-<div class="view-tutorial-container">
-    <div>
-        <h1>Section names:</h1>
-        <ul *ngIf="($tutorial | async) as tutorial">
-            <li 
-                *ngFor="let section of tutorial[0].sections"
-                (click)="navigateToSection(tutorial[0]._id, section.sectionName)">
-                {{ section.sectionName }}
-            </li>
-        </ul>
-    </div>
+<div class="view-tutorial-container" *ngIf="($tutorial | async) as tutorial">
+    <mat-list role="list">
+        <mat-list-item 
+            role="listitem"
+            *ngFor="let section of tutorial[0].sections"
+            (click)="navigateToSection(tutorial[0]._id, section.sectionName)">
+            {{ section.sectionName }}
+        </mat-list-item>
+    </mat-list>
+
     <div class="section-container">
         <router-outlet name="section"></router-outlet>
     </div>
 </div>
-
-
-<mat-accordion>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Personal data
-        </mat-panel-title>
-        <mat-panel-description>
-          Type your name and age
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-  
-  
-    </mat-expansion-panel>
-    <mat-expansion-panel (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Self aware panel
-        </mat-panel-title>
-        <mat-panel-description>
-          Currently I am {{panelOpenState ? 'open' : 'closed'}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
-    </mat-expansion-panel>
-  </mat-accordion>

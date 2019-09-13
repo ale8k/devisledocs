@@ -18,7 +18,6 @@ export class CreateTutorialComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient,
     private apiService: ApiService
   ) { }
 

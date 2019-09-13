@@ -7,11 +7,12 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from "./app.component";
 import { NavigationBarComponent } from "./shared/components/navigation-bar/navigation-bar.component";
 import { HomeModule } from "./home/home.module";
+import { EditTutorialComponent } from './edit-tutorial/edit-tutorial.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
   ],
   imports: [
     BrowserModule,

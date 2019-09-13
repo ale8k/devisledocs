@@ -15,8 +15,10 @@
     nav {
         margin: 0 3vw 0 0;
         ul {
+            display: flex;
             list-style-type: none;
             li {
+                margin: 0 1vw;
                 a {
                     font-size: 1em;
                 }
