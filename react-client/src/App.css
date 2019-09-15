@@ -2,15 +2,30 @@
   text-align: center;
 }
 
-a {
-  text-decoration: none !important;
+/* Common Styles */
+
+.link-active {
+  text-decoration: none;
   color: #fff;
 }
 
-#title {
+.link-active:hover {
+  color: rgba(238, 238, 238, 0.5);
+  text-decoration: none;
+}
+
+.nav-height {
+  height: 50px;
+}
+
+/* Navbar Specific */
+
+.main-title {
   font-size: 1.5rem;
   font-weight: lighter;
   letter-spacing: 2px;
   font-family: "Montserrat", sans-serif;
   color: #fff;
 }
+
+/* Body Specifid */

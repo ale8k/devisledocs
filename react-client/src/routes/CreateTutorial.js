@@ -40,7 +40,7 @@ export default class CreateTutorial extends Component {
     })
   }
 
-  createSection = (e, index, type) => {
+  createSection = (event, index, type) => {
     const tutorialData = { ...this.state.tutorialData }
     switch (type) {
       case "create":
@@ -59,7 +59,7 @@ export default class CreateTutorial extends Component {
     }
   }
 
-  SectionDetailsHandler = (e, index, type) => {
+  SectionDetailsHandler = (event, index, type) => {
     const tutorialData = { ...this.state.tutorialData }
     switch (type) {
       case "create":
@@ -124,21 +124,21 @@ export default class CreateTutorial extends Component {
                 >
                   Add Section
                 </Button>
-                {this.state.tutorialData.sections.map((data, i) => {
+                {this.state.tutorialData.sections.map((data, index) => {
                   return (
                     <>
                       <Section
                         SectionDetailsHandler={this.SectionDetailsHandler}
                         sectionDetails={
-                          this.state.tutorialData.sections[i].sectionDetails
+                          this.state.tutorialData.sections[index].sectionDetails
                         }
-                        key={i}
-                        index={i}
+                        key={index}
+                        index={index}
                       />
                       <Button
                         variant="danger"
                         className="m-3"
-                        onClick={e => this.createSection(e, i, "delete")}
+                        onClick={e => this.createSection(e, index, "delete")}
                       >
                         Remove Section
                       </Button>
