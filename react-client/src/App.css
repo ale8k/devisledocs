@@ -1,39 +1,30 @@
 .App {
-  text-align: center;
-}
+  text-align: center; }
 
 /* Variables */
-
 :root {
-  --nav-height: 50px;
-}
+  --nav-height: 50px; }
 
 /* Common Styles */
-
 .link {
   text-decoration: none;
-  color: #fff;
-}
+  color: #fff; }
 
 .link:hover {
   color: rgba(238, 238, 238, 0.5);
-  text-decoration: none;
-}
+  text-decoration: none; }
 
 /* Navbar */
 .nav-height {
-  height: var(--nav-height);
-}
+  height: var(--nav-height); }
 
 .main-title {
   font-size: 1.5rem;
   font-weight: lighter;
   letter-spacing: 2px;
   font-family: "Montserrat", sans-serif;
-  color: #fff;
-}
+  color: #fff; }
 
 /* Body  */
 .body-height {
-  min-height: calc(100vh - var(--nav-height));
-}
+  min-height: calc(100vh - var(--nav-height)); }
