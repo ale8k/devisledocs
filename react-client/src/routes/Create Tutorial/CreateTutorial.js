@@ -1,37 +1,27 @@
 import React, { Component } from "react"
 import Section from "./Section"
+import { SectionDataModel } from "../../shared/models/SectionDataModel";
+import { SectionDetailDataModel } from "../../shared/models/SectionDetailDataModel"
 
 //Bootstrap
 import { Button } from "react-bootstrap"
 
-const sectionsDataModel = {
-  sectionName: String,
-  sectionDetails: [
-    {
-      detailHeader: String,
-      detailImages: [String],
-      detailText: String
-    }
-  ]
-}
-
-const sectionsDetailsDataModel = {
-  detailHeader: String,
-  detailImages: [String],
-  detailText: String
-}
-
 export default class CreateTutorial extends Component {
-  state = {
-    createTutorial: false,
-    tutorialData: {
-      tutorialName: null,
-      sections: []
-    },
-    sectionsCounter: null,
-    detailHeaderCounter: null,
-    detailImagesCounter: null,
-    detailTextCounter: null
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      createTutorial: false,
+      tutorialData: {
+        tutorialName: null,
+        sections: []
+      },
+      sectionsCounter: null,
+      detailHeaderCounter: null,
+      detailImagesCounter: null,
+      detailTextCounter: null
+    }
+
   }
 
   createTut = () => {
@@ -44,7 +34,7 @@ export default class CreateTutorial extends Component {
     const tutorialData = { ...this.state.tutorialData }
     switch (type) {
       case "create":
-        tutorialData.sections.push(sectionsDataModel)
+        tutorialData.sections.push(SectionDataModel)
         this.setState({
           tutorialData
         })
@@ -64,7 +54,7 @@ export default class CreateTutorial extends Component {
     switch (type) {
       case "create":
         tutorialData.sections[index].sectionDetails.push(
-          sectionsDetailsDataModel
+          SectionDetailDataModel
         )
         this.setState({
           tutorialData
