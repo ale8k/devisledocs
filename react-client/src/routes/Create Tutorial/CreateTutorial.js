@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import Section from "../components/createTutorial/section"
+import Section from "./Section"
 
 //Bootstrap
 import { Button } from "react-bootstrap"

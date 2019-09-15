@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Button } from "react-bootstrap"
-export default class section extends Component {
+
+export default class Section extends Component {
   render() {
     const { index, SectionDetailsHandler, sectionDetails } = this.props
     return (

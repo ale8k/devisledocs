@@ -1,10 +1,9 @@
 import React from "react"
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom"
-import "./App.css"
-// import Header from "./components/header";
+import "./App.scss"
 
-import Home from "./routes/Home"
-import CreateTutorial from "./routes/CreateTutorial"
+import Home from "./routes/Home/Home"
+import CreateTutorial from "./routes/Create Tutorial/CreateTutorial"
 
 export default function App() {
   return (
