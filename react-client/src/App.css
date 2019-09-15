@@ -1,3 +1,39 @@
 .App {
   text-align: center;
 }
+
+/* Variables */
+
+:root {
+  --nav-height: 50px;
+}
+
+/* Common Styles */
+
+.link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.link:hover {
+  color: rgba(238, 238, 238, 0.5);
+  text-decoration: none;
+}
+
+/* Navbar */
+.nav-height {
+  height: var(--nav-height);
+}
+
+.main-title {
+  font-size: 1.5rem;
+  font-weight: lighter;
+  letter-spacing: 2px;
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+}
+
+/* Body  */
+.body-height {
+  min-height: calc(100vh - var(--nav-height));
+}
