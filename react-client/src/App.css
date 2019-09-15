@@ -2,23 +2,28 @@
   text-align: center;
 }
 
+/* Variables */
+
+:root {
+  --nav-height: 50px;
+}
+
 /* Common Styles */
 
-.link-active {
+.link {
   text-decoration: none;
   color: #fff;
 }
 
-.link-active:hover {
+.link:hover {
   color: rgba(238, 238, 238, 0.5);
   text-decoration: none;
 }
 
+/* Navbar */
 .nav-height {
-  height: 50px;
+  height: var(--nav-height);
 }
-
-/* Navbar Specific */
 
 .main-title {
   font-size: 1.5rem;
@@ -28,4 +33,7 @@
   color: #fff;
 }
 
-/* Body Specifid */
+/* Body  */
+.body-height {
+  min-height: calc(100vh - var(--nav-height));
+}

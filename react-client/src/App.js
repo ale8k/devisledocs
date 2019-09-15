@@ -16,12 +16,12 @@ export default function App() {
           </p>
           <ul className="d-flex list-unstyled mt-3 mb-3">
             <li className="pr-3 pl-3">
-              <NavLink activeClassName="link-active" to="/">
+              <NavLink className="link" to="/">
                 Home
               </NavLink>
             </li>
             <li className="pr-3 pl-3">
-              <NavLink activeClassName="link-active" to="/createTutorial">
+              <NavLink className="link" to="/createTutorial">
                 Create Tutorial
               </NavLink>
             </li>

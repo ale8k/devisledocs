@@ -89,10 +89,7 @@ export default class CreateTutorial extends Component {
   render() {
     return (
       <div className="bg-dark">
-        <div
-          className="p-2 container"
-          style={{ minHeight: "calc(100vh - 50px)" }}
-        >
+        <div className="p-2 container body-height">
           <Button
             variant="primary"
             className="m-3"
