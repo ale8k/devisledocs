@@ -1,4 +1,4 @@
-const Tutorial = require("../models/tutorialSchema");
+const Tutorial = require("../models/tutorial-schema");
 
 /**
  * Gets a single tutorial by Id.
