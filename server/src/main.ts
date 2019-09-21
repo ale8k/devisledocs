@@ -1,5 +1,7 @@
 /**
  * May implement OvernightJS for route decorators... But this needs discussion.
+ * I have initially added TypeScript for now simple for the types
+ * but OvernightJS looks interesting to enable decorators for our routes
  */
 import * as express from "express";
 import * as bodyParser from "body-parser";
