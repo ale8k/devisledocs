@@ -1,17 +1,17 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { HomeComponent } from "./home.component";
-import { HomeRoutingModule } from "./home-routing.module";
+import { TutorialComponent } from "./tutorial.component";
+import { TutorialRoutingModule } from "./tutorial-routing.module";
 import { ViewTutorialModule } from "./view-tutorial/view-tutorial.module";
 
 @NgModule({
   declarations: [
-    HomeComponent
+    TutorialComponent
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule,
+    TutorialRoutingModule,
     ViewTutorialModule
   ]
 })
-export class HomeModule { }
+export class TutorialModule { }

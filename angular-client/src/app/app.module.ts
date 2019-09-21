@@ -6,8 +6,8 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from "./app.component";
 import { NavigationBarComponent } from "./shared/components/navigation-bar/navigation-bar.component";
-import { HomeModule } from "./home/home.module";
-import { EditTutorialComponent } from './edit-tutorial/edit-tutorial.component';
+import { TutorialModule } from "./tutorial/tutorial.module";
+import { EditTutorialComponent } from "./edit-tutorial/edit-tutorial.component";
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { EditTutorialComponent } from './edit-tutorial/edit-tutorial.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    HomeModule
+    TutorialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap"
 
 export default class Section extends Component {
   render() {
-    const { index, SectionDetailsHandler, sectionDetails } = this.props
+    const { index, sectionDetailsHandler, sectionDetails } = this.props
     return (
       <div>
         <div>
@@ -25,8 +25,7 @@ export default class Section extends Component {
         <Button
           variant="primary"
           className="m-3"
-          onClick={e => SectionDetailsHandler(e, index, "create")}
-        >
+          onClick={e => sectionDetailsHandler(e, index, "create")}>
           Add Details
         </Button>
         {sectionDetails !== undefined &&
@@ -64,7 +63,7 @@ export default class Section extends Component {
                 <Button
                   variant="danger"
                   className="m-3"
-                  onClick={e => SectionDetailsHandler(e, index, "delete")}
+                  onClick={e => sectionDetailsHandler(e, index, "delete")}
                 >
                   Remove Details
                 </Button>

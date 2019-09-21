@@ -3,12 +3,11 @@ import { Router } from "@angular/router";
 import { TutorialService } from "../shared/services/tutorial.service";
 
 @Component({
-  selector: "home",
-  templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.scss"]
+  selector: "tutorial",
+  templateUrl: "./tutorial.component.html",
+  styleUrls: ["./tutorial.component.scss"]
 })
-export class HomeComponent implements OnInit {
-
+export class TutorialComponent implements OnInit {
 
   public $tutorialNamesIdsAndCategories;
 

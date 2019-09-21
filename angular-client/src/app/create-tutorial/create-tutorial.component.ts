@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
-import { HttpClient } from "@angular/common/http";
 import { ITutorial } from "../shared/models/ITutorial";
 import { ApiService } from "../shared/services/api.service";
 

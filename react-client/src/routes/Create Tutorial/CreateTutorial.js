@@ -2,8 +2,6 @@ import React, { Component } from "react"
 import Section from "./Section"
 import { SectionDataModel } from "../../shared/models/SectionDataModel";
 import { SectionDetailDataModel } from "../../shared/models/SectionDetailDataModel"
-
-//Bootstrap
 import { Button } from "react-bootstrap"
 
 export default class CreateTutorial extends Component {
@@ -24,13 +22,13 @@ export default class CreateTutorial extends Component {
 
   }
 
-  createTut = () => {
+  createTut() {
     this.setState({
       createTutorial: !this.state.createTutorial
     })
   }
 
-  createSection = (event, index, type) => {
+  createSection(event, index, type) {
     const tutorialData = { ...this.state.tutorialData }
     switch (type) {
       case "create":
@@ -49,7 +47,7 @@ export default class CreateTutorial extends Component {
     }
   }
 
-  SectionDetailsHandler = (event, index, type) => {
+  sectionDetailsHandler(event, index, type) {
     const tutorialData = { ...this.state.tutorialData }
     switch (type) {
       case "create":
@@ -71,7 +69,7 @@ export default class CreateTutorial extends Component {
     }
   }
 
-  setTutorial = () => {
+  setTutorial() {
     console.log(this.refs)
     // this.state.tutorialData.sections.forEach(d => console.log(d))
   }
@@ -115,7 +113,7 @@ export default class CreateTutorial extends Component {
                   return (
                     <>
                       <Section
-                        SectionDetailsHandler={this.SectionDetailsHandler}
+                        SectionDetailsHandler={this.sectionDetailsHandler}
                         sectionDetails={
                           this.state.tutorialData.sections[index].sectionDetails
                         }
